@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:bumble/gender.dart';
 import 'package:flutter/material.dart';
 import 'const.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'gender.dart';
 
 class pfp extends StatefulWidget {
   const pfp({super.key});
@@ -13,10 +14,9 @@ class pfp extends StatefulWidget {
 }
 
 class _pfp extends State<pfp> {
-late File imageFile;
+  PickedFile? _imageFile;
+  final ImagePicker _picker = ImagePicker();
 
-
-  
   bool _switchValue = true;
 
   @override
@@ -74,72 +74,66 @@ late File imageFile;
             SizedBox(
               height: 50,
             ),
-          
-           imageFile == null
-                ? Container(
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  RaisedButton(
-                    color: Colors.greenAccent,
-                    onPressed: () {
-                      _getFromGallery();
-                    },
-                    child: Text("PICK FROM GALLERY"),
-                  ),
-                  Container(
-                    height: 40.0,
-                  ),
-                  RaisedButton(
-                    color: Colors.lightGreenAccent,
-                    onPressed: () {
-                      _getFromCamera();
-                    },
-                    child: Text("PICK FROM CAMERA"),
-                  )
-                ],
-              ),
-            ): Container(
-              child: Image.file(
-                imageFile,
-                fit: BoxFit.cover,
-              ),
-            
 
-  
+            //          imageFile == null
+            //               ? Container(
+            //             alignment: Alignment.center,
+            //             child: Column(
+            //               mainAxisAlignment: MainAxisAlignment.center,
+            //               children: <Widget>[
+            //                 RaisedButton(
+            //                   color: Colors.greenAccent,
+            //                   onPressed: () {
+            //                     _getFromGallery();
+            //                   },
+            //                   child: Text("PICK FROM GALLERY"),
+            //                 ),
+            //                 Container(
+            //                   height: 40.0,
+            //                 ),
+            //                 RaisedButton(
+            //                   color: Colors.lightGreenAccent,
+            //                   onPressed: () {
+            //                     _getFromCamera();
+            //                   },
+            //                   child: Text("PICK FROM CAMERA"),
+            //                 )
+            //               ],
+            //             ),
+            //           ): Container(
+            //             child: Image.file(
+            //               imageFile,
+            //               fit: BoxFit.cover,
+            //             ),
 
-  /// Get from gallery
-  _getFromGallery() async {
-    PickedFile? pickedFile = await ImagePicker().getImage(
-      source: ImageSource.gallery,
-      maxWidth: 1800,
-      maxHeight: 1800,
-    );
-    if (pickedFile != null) {
-      setState(() {
-        imageFile = File(pickedFile.path);
-      });
-    }
-  }
+            // /// Get from gallery
+            // _getFromGallery() async {
+            //   PickedFile? pickedFile = await ImagePicker().getImage(
+            //     source: ImageSource.gallery,
+            //     maxWidth: 1800,
+            //     maxHeight: 1800,
+            //   );
+            //   if (pickedFile != null) {
+            //     setState(() {
+            //       imageFile = File(pickedFile.path);
+            //     });
+            //   }
+            // }
 
-  /// Get from Camera
-  _getFromCamera() async {
-    PickedFile? pickedFile = await ImagePicker().getImage(
-      source: ImageSource.camera,
-      maxWidth: 1800,
-      maxHeight: 1800,
-    );
-    if (pickedFile != null) {
-      setState(() {
-        imageFile = File(pickedFile.path);
-      
-    
+            // /// Get from Camera
+            // _getFromCamera() async {
+            //   PickedFile? pickedFile = await ImagePicker().getImage(
+            //     source: ImageSource.camera,
+            //     maxWidth: 1800,
+            //     maxHeight: 1800,
+            //   );
+            //   if (pickedFile != null) {
+            //     setState(() {
+            //       imageFile = File(pickedFile.path);
 
-
-            SizedBox(
-              height: 20,
-            ),
+            //           SizedBox(
+            //             height: 20,
+            //           ),
 
             // Transform.scale(
             //   scale: 0.8,
@@ -152,50 +146,35 @@ late File imageFile;
             //     },
             //   ),
             // ),
-            Padding(
-              padding: hPadding,
-              child: TextFormField(
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  focusColor: Colors.green,
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 6,
-                    horizontal: 10,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide(
-                      color: Colors.green,
-                    ),
-                  ),
-                  fillColor: Color(0xFF192126),
-                  filled: true,
-                  hintStyle: GoogleFonts.lato(
-                      fontSize: 14, color: Color.fromARGB(255, 231, 231, 236)),
-                  hintText: 'example@gmail.com',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty ||
-                      !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                          .hasMatch(value)) {
-                    return "Enter valid Email address";
-                  } else {
-                    return null;
-                  }
-                },
-              ),
-            ),
+
             SizedBox(
-              height: 10,
+              height: 70,
+            ),
+            imageProfile(),
+            // SizedBox(
+            //   height: 80,
+            // ),
+            SizedBox(
+              height: 50,
             ),
             Padding(
               padding: hPadding,
-              child: Text(
-                "Marketing communications ",
-                style: GoogleFonts.lato(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
+              child: ElevatedButton(
+                onPressed: () {
+                  _navigateToNextScreen(context);
+                },
+                child: Text(
+                  'Next',
+                ),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(40), // NEW
+
+                  backgroundColor: Color(0xFF192126),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    // <-- Radius
+                  ),
+                ),
               ),
             ),
           ]),
@@ -204,8 +183,87 @@ late File imageFile;
     );
   }
 
-  // void _navigateToNextScreen(BuildContext context) {
-  //   Navigator.of(context)
-  //       .push(MaterialPageRoute(builder: (context) => privacyScreen()));
-  // }
+  Widget imageProfile() {
+    return Center(
+      child: Stack(children: <Widget>[
+        CircleAvatar(
+          radius: 80,
+          backgroundColor: Colors.white,
+          backgroundImage:
+              _imageFile == null ? null : FileImage(File(_imageFile!.path)),
+        ),
+        Positioned(
+          bottom: 20.0,
+          right: 20.0,
+          child: InkWell(
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                builder: ((builder) => bottomSheet()),
+              );
+            },
+            child: Icon(
+              Icons.camera_alt,
+              color: Colors.teal,
+              size: 28.0,
+            ),
+          ),
+        ),
+      ]),
+    );
+  }
+
+  Widget bottomSheet() {
+    return Container(
+      height: 100.0,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
+      child: Column(
+        children: <Widget>[
+          Text(
+            "Choose Profile photo",
+            style: TextStyle(
+              fontSize: 20.0,
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            TextButton.icon(
+              icon: Icon(Icons.camera),
+              onPressed: () {
+                takePhoto(ImageSource.camera);
+              },
+              label: Text("Camera"),
+            ),
+            TextButton.icon(
+              icon: Icon(Icons.image),
+              onPressed: () {
+                takePhoto(ImageSource.gallery);
+              },
+              label: Text("Gallery"),
+            ),
+          ])
+        ],
+      ),
+    );
+  }
+
+  void takePhoto(ImageSource source) async {
+    final pickedFile = await _picker.getImage(
+      source: source,
+    );
+    setState(() {
+      _imageFile = pickedFile!;
+    });
+  }
+
+  void _navigateToNextScreen(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => gender()));
+  }
 }
