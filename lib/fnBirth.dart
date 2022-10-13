@@ -3,6 +3,7 @@ import 'const.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'addEmail.dart';
+import 'package:steps_indicator/steps_indicator.dart';
 
 class fnBirth extends StatefulWidget {
   const fnBirth({super.key});
@@ -12,6 +13,8 @@ class fnBirth extends StatefulWidget {
 }
 
 class _fnBirth extends State<fnBirth> {
+  int selectedStep = 0;
+  int nbSteps = 5;
   TextEditingController dateinput = TextEditingController();
   @override
   void initState() {
@@ -22,16 +25,35 @@ class _fnBirth extends State<fnBirth> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bgmyColor,
       body: new Stack(children: <Widget>[
         new Container(
-          decoration: new BoxDecoration(
-            image: new DecorationImage(
-              image: new AssetImage(Images.orange),
-              fit: BoxFit.cover,
-            ),
-          ),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            StepsIndicator(
+              selectedStep: selectedStep,
+              nbSteps: nbSteps,
+              doneLineColor: Color.fromARGB(255, 23, 23, 23),
+              doneStepColor: Color.fromARGB(255, 0, 0, 0),
+              undoneLineColor: Color.fromARGB(255, 78, 76, 76),
+              unselectedStepColorIn: Color.fromARGB(255, 78, 76, 76),
+              unselectedStepColorOut: Color.fromARGB(255, 78, 76, 76),
+              selectedStepColorIn: Color.fromARGB(255, 23, 23, 23),
+              selectedStepColorOut: Color.fromARGB(255, 23, 23, 23),
+              lineLength: 20,
+              doneLineThickness: 3,
+              undoneLineThickness: 1,
+              lineLengthCustomStep: [
+                StepsIndicatorCustomLine(nbStep: 4, length: 105)
+              ],
+              enableLineAnimation: true,
+              enableStepAnimation: true,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[],
+            ),
             SizedBox(
               height: 40,
             ),
@@ -163,7 +185,7 @@ class _fnBirth extends State<fnBirth> {
               ),
             ),
             SizedBox(
-              height: 280,
+              height: 250,
             ),
             Padding(
               padding: EdgeInsets.only(left: 32),

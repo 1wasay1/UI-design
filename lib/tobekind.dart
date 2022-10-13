@@ -1,20 +1,19 @@
-import 'package:bumble/fnBirth.dart';
 import 'package:flutter/material.dart';
 import 'const.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class privacyScreen extends StatefulWidget {
-  const privacyScreen({super.key});
+class tobekind extends StatefulWidget {
+  const tobekind({super.key});
 
   @override
-  State<privacyScreen> createState() => _privacyScreen();
+  State<tobekind> createState() => _tobekind();
 }
 
-class _privacyScreen extends State<privacyScreen> {
+class _tobekind extends State<tobekind> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 36, 34, 34),
+        backgroundColor: bgmyColor,
         body: new Stack(children: <Widget>[
           new Container(
             child:
@@ -22,77 +21,22 @@ class _privacyScreen extends State<privacyScreen> {
               SizedBox(
                 height: 80,
               ),
-              Padding(
-                padding: hPadding,
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('lockk.png'),
-                  radius: 35,
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: hPadding,
+              Center(
                 child: Text(
-                  'We care about your',
+                  "It's cool",
                   style: GoogleFonts.lato(
-                      fontSize: 28,
+                      fontSize: 34,
                       fontWeight: FontWeight.w900,
                       color: Colors.white),
                 ),
               ),
-              Padding(
-                padding: hPadding,
+              Center(
                 child: Text(
-                  'privacy',
+                  "to be kind",
                   style: GoogleFonts.lato(
                       fontSize: 28,
                       fontWeight: FontWeight.w900,
                       color: Colors.white),
-                ),
-              ),
-              SizedBox(
-                height: 6,
-              ),
-              Padding(
-                padding: hPadding,
-                child: Text(
-                  'Along with our partners we store and',
-                  style: GoogleFonts.lato(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: myColor),
-                ),
-              ),
-              Padding(
-                padding: hPadding,
-                child: Text(
-                  'process info from your device to provide',
-                  style: GoogleFonts.lato(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: myColor),
-                ),
-              ),
-              Padding(
-                padding: hPadding,
-                child: Text(
-                  'features in the app and improve',
-                  style: GoogleFonts.lato(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: myColor),
-                ),
-              ),
-              Padding(
-                padding: hPadding,
-                child: Text(
-                  'marketing campaigns.',
-                  style: GoogleFonts.lato(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: myColor),
                 ),
               ),
               SizedBox(
@@ -101,7 +45,7 @@ class _privacyScreen extends State<privacyScreen> {
               Padding(
                 padding: hPadding,
                 child: Text(
-                  'You can always make changes or opt out',
+                  "Welcome! We're are excited to be a part",
                   style: GoogleFonts.lato(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -111,7 +55,20 @@ class _privacyScreen extends State<privacyScreen> {
               Padding(
                 padding: hPadding,
                 child: Text(
-                  'in your privacy settins. Finf out more in',
+                  'of your dating journey.',
+                  style: GoogleFonts.lato(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: myColor),
+                ),
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              Padding(
+                padding: hPadding,
+                child: Text(
+                  'Here we treat everyone with kindness',
                   style: GoogleFonts.lato(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -121,7 +78,109 @@ class _privacyScreen extends State<privacyScreen> {
               Padding(
                 padding: hPadding,
                 child: Text(
-                  'our privacy policy',
+                  'and respect no matter their race,',
+                  style: GoogleFonts.lato(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: myColor),
+                ),
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              Padding(
+                padding: hPadding,
+                child: Text(
+                  'religion, ethinicity, nationality, skin colour,',
+                  style: GoogleFonts.lato(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: myColor),
+                ),
+              ),
+              Padding(
+                padding: hPadding,
+                child: Text(
+                  'ability, size, sex, gender, identity, or',
+                  style: GoogleFonts.lato(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: myColor),
+                ),
+              ),
+              Padding(
+                padding: hPadding,
+                child: Text(
+                  'sexual orientation',
+                  style: GoogleFonts.lato(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: myColor),
+                ),
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              Padding(
+                padding: hPadding,
+                child: Text(
+                  'In our mission to actively keep bumble',
+                  style: GoogleFonts.lato(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: myColor),
+                ),
+              ),
+              Padding(
+                padding: hPadding,
+                child: Text(
+                  'safe and inclusive, we ask you to join us',
+                  style: GoogleFonts.lato(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: myColor),
+                ),
+              ),
+              Padding(
+                padding: hPadding,
+                child: Text(
+                  'by adhering to our guidelines',
+                  style: GoogleFonts.lato(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: myColor),
+                ),
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              Padding(
+                padding: hPadding,
+                child: Text(
+                  "And remember. We've always got",
+                  style: GoogleFonts.lato(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: myColor),
+                ),
+              ),
+              Padding(
+                padding: hPadding,
+                child: Text(
+                  'your back!',
+                  style: GoogleFonts.lato(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: myColor),
+                ),
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              Padding(
+                padding: hPadding,
+                child: Text(
+                  'With love, the Bumble team',
                   style: GoogleFonts.lato(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -135,7 +194,7 @@ class _privacyScreen extends State<privacyScreen> {
                 padding: hPadding,
                 child: ElevatedButton(
                   onPressed: () {
-                    _navigateToNextScreen(context);
+                    // _navigateToNextScreen(context);
                   },
                   child: Text(
                     'Accept',
@@ -154,26 +213,13 @@ class _privacyScreen extends State<privacyScreen> {
               SizedBox(
                 height: 10,
               ),
-              Center(
-                child: TextButton(
-                    onPressed: () {
-                      _navigateToNextScreen(context);
-                    },
-                    child: Text(
-                      "Change or reject",
-                      style: GoogleFonts.lato(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
-                    )),
-              )
             ]),
           )
         ]));
   }
 
-  void _navigateToNextScreen(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => fnBirth()));
-  }
+  // void _navigateToNextScreen(BuildContext context) {
+  //   Navigator.of(context)
+  //       .push(MaterialPageRoute(builder: (context) => fnBirth()));
+  // }
 }

@@ -9,3 +9,6 @@ class Images {
 
 final EdgeInsets hPadding = EdgeInsets.symmetric(horizontal: 64);
 final myColor = Color.fromARGB(255, 103, 100, 100); // description text
+
+final bgmyColor = Color.fromARGB(255, 215, 149, 36); // description text
+

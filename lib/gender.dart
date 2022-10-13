@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'lifestage.dart';
 import 'const.dart';
+import 'package:steps_indicator/steps_indicator.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -25,6 +26,8 @@ class gender extends StatefulWidget {
 }
 
 class _State extends State<gender> {
+  int selectedStep = 3;
+  int nbSteps = 5;
   int _value2 = 0;
   List<GroupModel> _group = [
     GroupModel(text: "Woman", index: 1, selected: false),
@@ -47,31 +50,35 @@ class _State extends State<gender> {
             borderRadius: BorderRadius.all(
                 Radius.circular(10.0) //         <--- border radius here
                 )),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          RadioListTile(
-            value: _group[i].index,
-            groupValue: _value2,
-            selected: _group[i].selected,
-            onChanged: (val) {
-              setState(() {
-                for (int i = 0; i < _group.length; i++) {
-                  _group[i].selected = false;
-                }
-                _value2 = val!;
-                _group[i].selected = true;
-              });
-            },
-            activeColor: Colors.white,
-            controlAffinity: ListTileControlAffinity.trailing,
-            title: Text(
-              ' ${_group[i].text}',
-              style: TextStyle(
-                  color: _group[i].selected ? Colors.white : Colors.black,
-                  fontWeight:
-                      _group[i].selected ? FontWeight.bold : FontWeight.normal),
-            ),
-          )
-        ]),
+        child: Column(
+            //   crossAxisAlignment: CrossAxisAlignment.start
+            // ,
+            children: [
+              RadioListTile(
+                value: _group[i].index,
+                groupValue: _value2,
+                selected: _group[i].selected,
+                onChanged: (val) {
+                  setState(() {
+                    for (int i = 0; i < _group.length; i++) {
+                      _group[i].selected = false;
+                    }
+                    _value2 = val!;
+                    _group[i].selected = true;
+                  });
+                },
+                activeColor: Colors.white,
+                controlAffinity: ListTileControlAffinity.trailing,
+                title: Text(
+                  ' ${_group[i].text}',
+                  style: TextStyle(
+                      color: _group[i].selected ? Colors.white : Colors.black,
+                      fontWeight: _group[i].selected
+                          ? FontWeight.bold
+                          : FontWeight.normal),
+                ),
+              )
+            ]),
       ));
     }
 
@@ -84,17 +91,38 @@ class _State extends State<gender> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bgmyColor,
       //hit Ctrl+space in intellij to know what are the options you can use in flutter widgets
       body: new Stack(children: <Widget>[
         new Container(
-          decoration: new BoxDecoration(
-            image: new DecorationImage(
-              image: new AssetImage(Images.orange),
-              fit: BoxFit.cover,
-            ),
-          ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              StepsIndicator(
+                selectedStep: selectedStep,
+                nbSteps: nbSteps,
+                doneLineColor: Color.fromARGB(255, 23, 23, 23),
+                doneStepColor: Color.fromARGB(255, 0, 0, 0),
+                undoneLineColor: Color.fromARGB(255, 78, 76, 76),
+                unselectedStepColorIn: Color.fromARGB(255, 78, 76, 76),
+                unselectedStepColorOut: Color.fromARGB(255, 78, 76, 76),
+                selectedStepColorIn: Color.fromARGB(255, 23, 23, 23),
+                selectedStepColorOut: Color.fromARGB(255, 23, 23, 23),
+                lineLength: 20,
+                doneLineThickness: 3,
+                undoneLineThickness: 1,
+                lineLengthCustomStep: [
+                  StepsIndicatorCustomLine(nbStep: 4, length: 105)
+                ],
+                enableLineAnimation: true,
+                enableStepAnimation: true,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[],
+              ),
               Padding(
                 padding: hPadding,
                 child: Text(
@@ -146,7 +174,7 @@ class _State extends State<gender> {
                 height: 200,
               ),
               Padding(
-                padding: EdgeInsets.only(left: 32),
+                padding: hPadding,
                 child: Text(
                   "👁 This will be shown on your profile",
                   style: GoogleFonts.lato(

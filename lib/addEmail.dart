@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'const.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'pfp.dart';
+import 'package:steps_indicator/steps_indicator.dart';
 
 class addEmail extends StatefulWidget {
   const addEmail({super.key});
@@ -12,21 +13,42 @@ class addEmail extends StatefulWidget {
 }
 
 class _addEmail extends State<addEmail> {
+  int selectedStep = 1;
+  int nbSteps = 5;
   bool _switchValue = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bgmyColor,
       body: new Stack(children: <Widget>[
         new Container(
-          decoration: new BoxDecoration(
-            image: new DecorationImage(
-              image: new AssetImage(Images.orange),
-              fit: BoxFit.cover,
-            ),
-          ),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            StepsIndicator(
+              selectedStep: selectedStep,
+              nbSteps: nbSteps,
+              doneLineColor: Color.fromARGB(255, 23, 23, 23),
+              doneStepColor: Color.fromARGB(255, 0, 0, 0),
+              undoneLineColor: Color.fromARGB(255, 78, 76, 76),
+              unselectedStepColorIn: Color.fromARGB(255, 78, 76, 76),
+              unselectedStepColorOut: Color.fromARGB(255, 78, 76, 76),
+              selectedStepColorIn: Color.fromARGB(255, 23, 23, 23),
+              selectedStepColorOut: Color.fromARGB(255, 23, 23, 23),
+              lineLength: 20,
+              doneLineThickness: 3,
+              undoneLineThickness: 1,
+              lineLengthCustomStep: [
+                StepsIndicatorCustomLine(nbStep: 4, length: 105)
+              ],
+              enableLineAnimation: true,
+              enableStepAnimation: true,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[],
+            ),
             SizedBox(
               height: 40,
             ),

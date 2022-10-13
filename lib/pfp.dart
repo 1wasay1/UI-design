@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'gender.dart';
+import 'package:steps_indicator/steps_indicator.dart';
 
 class pfp extends StatefulWidget {
   const pfp({super.key});
@@ -14,6 +15,8 @@ class pfp extends StatefulWidget {
 }
 
 class _pfp extends State<pfp> {
+  int selectedStep = 2;
+  int nbSteps = 5;
   PickedFile? _imageFile;
   final ImagePicker _picker = ImagePicker();
 
@@ -22,16 +25,35 @@ class _pfp extends State<pfp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bgmyColor,
       body: new Stack(children: <Widget>[
         new Container(
-          decoration: new BoxDecoration(
-            image: new DecorationImage(
-              image: new AssetImage(Images.orange),
-              fit: BoxFit.cover,
-            ),
-          ),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            StepsIndicator(
+              selectedStep: selectedStep,
+              nbSteps: nbSteps,
+              doneLineColor: Color.fromARGB(255, 23, 23, 23),
+              doneStepColor: Color.fromARGB(255, 0, 0, 0),
+              undoneLineColor: Color.fromARGB(255, 78, 76, 76),
+              unselectedStepColorIn: Color.fromARGB(255, 78, 76, 76),
+              unselectedStepColorOut: Color.fromARGB(255, 78, 76, 76),
+              selectedStepColorIn: Color.fromARGB(255, 23, 23, 23),
+              selectedStepColorOut: Color.fromARGB(255, 23, 23, 23),
+              lineLength: 20,
+              doneLineThickness: 3,
+              undoneLineThickness: 1,
+              lineLengthCustomStep: [
+                StepsIndicatorCustomLine(nbStep: 4, length: 105)
+              ],
+              enableLineAnimation: true,
+              enableStepAnimation: true,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[],
+            ),
             SizedBox(
               height: 40,
             ),
