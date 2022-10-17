@@ -44,7 +44,7 @@ class _pfp extends State<pfp> {
               doneLineThickness: 3,
               undoneLineThickness: 1,
               lineLengthCustomStep: [
-                StepsIndicatorCustomLine(nbStep: 4, length: 105)
+                StepsIndicatorCustomLine(nbStep: 4, length: 20)
               ],
               enableLineAnimation: true,
               enableStepAnimation: true,
@@ -97,78 +97,6 @@ class _pfp extends State<pfp> {
               height: 50,
             ),
 
-            //          imageFile == null
-            //               ? Container(
-            //             alignment: Alignment.center,
-            //             child: Column(
-            //               mainAxisAlignment: MainAxisAlignment.center,
-            //               children: <Widget>[
-            //                 RaisedButton(
-            //                   color: Colors.greenAccent,
-            //                   onPressed: () {
-            //                     _getFromGallery();
-            //                   },
-            //                   child: Text("PICK FROM GALLERY"),
-            //                 ),
-            //                 Container(
-            //                   height: 40.0,
-            //                 ),
-            //                 RaisedButton(
-            //                   color: Colors.lightGreenAccent,
-            //                   onPressed: () {
-            //                     _getFromCamera();
-            //                   },
-            //                   child: Text("PICK FROM CAMERA"),
-            //                 )
-            //               ],
-            //             ),
-            //           ): Container(
-            //             child: Image.file(
-            //               imageFile,
-            //               fit: BoxFit.cover,
-            //             ),
-
-            // /// Get from gallery
-            // _getFromGallery() async {
-            //   PickedFile? pickedFile = await ImagePicker().getImage(
-            //     source: ImageSource.gallery,
-            //     maxWidth: 1800,
-            //     maxHeight: 1800,
-            //   );
-            //   if (pickedFile != null) {
-            //     setState(() {
-            //       imageFile = File(pickedFile.path);
-            //     });
-            //   }
-            // }
-
-            // /// Get from Camera
-            // _getFromCamera() async {
-            //   PickedFile? pickedFile = await ImagePicker().getImage(
-            //     source: ImageSource.camera,
-            //     maxWidth: 1800,
-            //     maxHeight: 1800,
-            //   );
-            //   if (pickedFile != null) {
-            //     setState(() {
-            //       imageFile = File(pickedFile.path);
-
-            //           SizedBox(
-            //             height: 20,
-            //           ),
-
-            // Transform.scale(
-            //   scale: 0.8,
-            //   child: CupertinoSwitch(
-            //     value: _switchValue,
-            //     onChanged: (bool value) {
-            //       setState(() {
-            //         _switchValue = value;
-            //       });
-            //     },
-            //   ),
-            // ),
-
             SizedBox(
               height: 70,
             ),
@@ -211,8 +139,12 @@ class _pfp extends State<pfp> {
         CircleAvatar(
           radius: 80,
           backgroundColor: Colors.white,
-          backgroundImage:
-              _imageFile == null ? null : FileImage(File(_imageFile!.path)),
+          // backgroundImage:
+          //       _imageFile == null ? null : FileImage(File(_imageFile!.path)),
+          // ),
+          backgroundImage: _imageFile == null
+              ? AssetImage("assets/darkbg.png")
+              : FileImage(File(_imageFile!.path)) as ImageProvider,
         ),
         Positioned(
           bottom: 20.0,
@@ -289,3 +221,74 @@ class _pfp extends State<pfp> {
         .push(MaterialPageRoute(builder: (context) => gender()));
   }
 }
+  //          imageFile == null
+            //               ? Container(
+            //             alignment: Alignment.center,
+            //             child: Column(
+            //               mainAxisAlignment: MainAxisAlignment.center,
+            //               children: <Widget>[
+            //                 RaisedButton(
+            //                   color: Colors.greenAccent,
+            //                   onPressed: () {
+            //                     _getFromGallery();
+            //                   },
+            //                   child: Text("PICK FROM GALLERY"),
+            //                 ),
+            //                 Container(
+            //                   height: 40.0,
+            //                 ),
+            //                 RaisedButton(
+            //                   color: Colors.lightGreenAccent,
+            //                   onPressed: () {
+            //                     _getFromCamera();
+            //                   },
+            //                   child: Text("PICK FROM CAMERA"),
+            //                 )
+            //               ],
+            //             ),
+            //           ): Container(
+            //             child: Image.file(
+            //               imageFile,
+            //               fit: BoxFit.cover,
+            //             ),
+
+            // /// Get from gallery
+            // _getFromGallery() async {
+            //   PickedFile? pickedFile = await ImagePicker().getImage(
+            //     source: ImageSource.gallery,
+            //     maxWidth: 1800,
+            //     maxHeight: 1800,
+            //   );
+            //   if (pickedFile != null) {
+            //     setState(() {
+            //       imageFile = File(pickedFile.path);
+            //     });
+            //   }
+            // }
+
+            // /// Get from Camera
+            // _getFromCamera() async {
+            //   PickedFile? pickedFile = await ImagePicker().getImage(
+            //     source: ImageSource.camera,
+            //     maxWidth: 1800,
+            //     maxHeight: 1800,
+            //   );
+            //   if (pickedFile != null) {
+            //     setState(() {
+            //       imageFile = File(pickedFile.path);
+
+            //           SizedBox(
+            //             height: 20,
+            //           ),
+
+            // Transform.scale(
+            //   scale: 0.8,
+            //   child: CupertinoSwitch(
+            //     value: _switchValue,
+            //     onChanged: (bool value) {
+            //       setState(() {
+            //         _switchValue = value;
+            //       });
+            //     },
+            //   ),
+            // ),

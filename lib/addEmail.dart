@@ -39,7 +39,7 @@ class _addEmail extends State<addEmail> {
               doneLineThickness: 3,
               undoneLineThickness: 1,
               lineLengthCustomStep: [
-                StepsIndicatorCustomLine(nbStep: 4, length: 105)
+                StepsIndicatorCustomLine(nbStep: 4, length: 20)
               ],
               enableLineAnimation: true,
               enableStepAnimation: true,

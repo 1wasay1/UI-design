@@ -95,7 +95,7 @@ class IchipexState extends State<Ichipex> with TickerProviderStateMixin {
                   doneLineThickness: 3,
                   undoneLineThickness: 1,
                   lineLengthCustomStep: [
-                    StepsIndicatorCustomLine(nbStep: 4, length: 105)
+                    StepsIndicatorCustomLine(nbStep: 4, length: 20)
                   ],
                   enableLineAnimation: true,
                   enableStepAnimation: true,
@@ -180,16 +180,16 @@ class IchipexState extends State<Ichipex> with TickerProviderStateMixin {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 32),
                   child: Container(
-                    height: 30,
+                    height: 80,
                     child: _buildChips(),
                   ),
                 ),
                 SizedBox(
-                  height: 250,
+                  height: 230,
                 ),
                 TextButton(
                     onPressed: () {
-                      // _navigateToNextScreen(context);
+                      _navigateToNextScreen(context);
                     },
                     child: Text(
                       "Skip",

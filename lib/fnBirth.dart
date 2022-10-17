@@ -44,7 +44,7 @@ class _fnBirth extends State<fnBirth> {
               doneLineThickness: 3,
               undoneLineThickness: 1,
               lineLengthCustomStep: [
-                StepsIndicatorCustomLine(nbStep: 4, length: 105)
+                StepsIndicatorCustomLine(nbStep: 4, length: 20)
               ],
               enableLineAnimation: true,
               enableStepAnimation: true,
@@ -130,18 +130,27 @@ class _fnBirth extends State<fnBirth> {
               height: 8,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 24, right: 64),
+              padding: hPadding,
               child: TextField(
                 controller: dateinput, //editing controller of this TextField
                 decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Color.fromARGB(255, 0, 0, 0)), //<-- SEE HERE
+                  focusColor: Colors.green,
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 6,
+                    horizontal: 10,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
-                    focusColor: Colors.green,
-                    icon: Icon(Icons.calendar_today), //icon of text field
-                    labelText: "Enter your Birthday" //label text of field
-                    ),
+                  ),
+                  fillColor: Color(0xFF192126),
+                  filled: true,
+                  hintStyle: GoogleFonts.lato(
+                      fontSize: 14, color: Color.fromARGB(255, 231, 231, 236)),
+                  hintText: 'Select your Birthday',
+                ),
                 readOnly:
                     true, //set it true, so that user will not able to edit text
                 onTap: () async {
